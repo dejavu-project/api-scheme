@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package athena.v1;
+
+// Broker configuration.
+// commission:          Commission rate charged by the broker for each trade.
+// cache:               Initial balance for trading.
+// capital_risk:        Capital risk limit imposed by the broker.
+// trade_on_close:      Indicates whether to trade on open or close.
+// exclusive_orders:    Indicates whether the broker accepts exclusive orders.
+message Broker {
+    float commission = 1;
+    float cache = 2;
+    float capital_risk = 3;
+    bool trade_on_close = 4;
+    bool exclusive_orders = 5;
+}

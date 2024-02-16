@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-package candle_struct.v1;
-
 import "google/protobuf/timestamp.proto";
 
 // Open, high, Low, Close, and Volume data for a single candlestick.
