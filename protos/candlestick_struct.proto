@@ -29,5 +29,5 @@ message Candlestick  {
 // Historical candlesticks data
 // candlestick: Array of candlesticks
 message Historical {
-    repeated candlestick = 1;
+    repeated Candlestick candlestick = 1;
 }

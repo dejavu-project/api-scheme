@@ -38,7 +38,8 @@ do
     ./scripts/create_dir.sh "src/$dir"
 
     python3 -m grpc_tools.protoc\
-        --proto_path=$proto_dir\
+        -I.\
+        --proto_path=$proto_dirs\
         --python_out=$src_dir\
         --grpc_python_out=$src_dir\
         $proto_dir/*.proto  # ./protos/<subdir>/*.proto
