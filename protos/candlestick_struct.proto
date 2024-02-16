@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package candle_struct.v1;
+
+import "google/protobuf/timestamp.proto";
+
+// Open, high, Low, Close, and Volume data for a single candlestick.
+// open:    Candlestick's opening price.
+// high:    Candlestick's high price.
+// low:     Candlestick's low price.
+// close:   Candlestick's closing price.
+// volume:  Traded volume.
+message Ohlcv {
+    float open = 1;
+    float high = 2;
+    float low = 3;
+    float close = 4;
+    float volume = 5;
+}
+
+// A candlestick containing OHLCV data for a financial instrument at a specific timestamp.
+// timestamp:   Candlestick's Timestamp.
+// ohlcv:       Candlestick's open, high, low, close and volume data.
+message Candlestick  {
+    google.protobuf.Timestamp timestamp = 1;
+    Ohlcv ohlcv = 2;
+}
+
+// Historical candlesticks data
+// candlestick: Array of candlesticks
+message Historical {
+    repeated candlestick = 1;
+}
