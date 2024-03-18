@@ -1,1 +1,1 @@
-# api-schema
+# api-scheme

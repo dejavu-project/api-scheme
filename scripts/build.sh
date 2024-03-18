@@ -1,11 +1,11 @@
 #!/bin/bash
 
 working_dir=$(pwd)
-proto_dirs=($(pwd)/protos)  # ./protos/
-python_dir=($(pwd)/src)     # ./src/
+proto_dirs=($(pwd)/protobufs)   # ./protobufs/
+python_dir=($(pwd)/rpc)         # ./rpc/
 
-# Create ./src/ dirctory
-directory="src"
+# Create ./rpc/ dirctory
+directory="rpc"
 if [ ! -d "$directory" ]; then
     # Create the directory
     mkdir -p "$directory"
@@ -14,7 +14,7 @@ else
     echo "Directory '$directory' already exists."
 fi
 
-# Build *.proto files within the ./protos/ directory
+# Build *.proto files within the ./protobufs/ directory
 for file in $proto_dirs/*.proto; do
     filename=$(basename "$file")
     if echo "$filename" | grep -q "struct"; then
