@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package athena.v1;
 
-import "athena_struct.proto";
+import "athena/athena_struct.proto";
 import "candlestick_struct.proto";
 
 // [Request] RequestBacktest
