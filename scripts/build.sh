@@ -15,8 +15,20 @@ else
 fi
 
 # Build *.proto files within the ./protos/ directory
-python3 -m grpc_tools.protoc\
-    --proto_path=$proto_dirs\
-    --python_out=$python_dir\
-    --grpc_python_out=$python_dir\
-    $proto_dirs/*.proto     # ./protos/*.proto
+for file in $proto_dirs/*.proto; do
+    filename=$(basename "$file")
+    if echo "$filename" | grep -q "struct"; then
+        # Only RPC for structs
+        python3 -m grpc_tools.protoc\
+            --proto_path=$proto_dirs\
+            --python_out=$python_dir\
+            $file
+    else
+        # RPC and gRPC for non structs
+        python3 -m grpc_tools.protoc\
+            --proto_path=$proto_dirs\
+            --python_out=$python_dir\
+            --grpc_python_out=$python_dir\
+            $file
+    fi
+done
