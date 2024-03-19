@@ -8,6 +8,7 @@
 ##########################################################
 
 import grpc
+from grpc_health.v1 import health_pb2_grpc
 
 # Third-party imports
 from src.rpc.base_client import BaseClient
@@ -32,10 +33,12 @@ class AthenaClient(BaseClient):
         """
         super().__init__(host, port)
 
+        self.service = 'Athena'
         self.channel = grpc.insecure_channel(self.target)
-        self.stub = athena_pb2_grpc.AthenaStub(self.channel)
 
-        self.is_server_ready()  # Check server rediness
+        # Stubs
+        self.stub = athena_pb2_grpc.AthenaStub(self.channel)
+        self.health_stub = health_pb2_grpc.HealthStub(self.channel) # Healthcheck
 
 
     def get_backtest(self) -> dict:

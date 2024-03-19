@@ -10,9 +10,9 @@
 import grpc
 
 # Third-party imports
-from src.rpc.base_server import BaseServer
 from protos.athena import athena_pb2
 from protos.athena import athena_pb2_grpc
+from src.rpc.base_server import BaseServer
 
 
 class GetBacktestService(athena_pb2_grpc.AthenaServicer):
@@ -43,6 +43,7 @@ class AthenaServer(BaseServer):
         host: str = 'localhost',
         port: int = 50051,
         n_workers: int = 1,
+        healthcheck_n_workers: int = 1,
     ) -> 'AthenaServer':
         """
             AthenaServer Constructor.
@@ -51,8 +52,10 @@ class AthenaServer(BaseServer):
                 - host (str): Server hostname. Defaults to `localhost`.
                 - port (int): Server port number. Defaults to `50051`.
                 - n_workers (int): Number of threads. Defaults to `1`.
+                - healthcheck_n_workers (int): Number of threads for healthchec. Defaults to `1`.
         """
-        super().__init__(host, port, n_workers)
+        super().__init__(host, port, n_workers, healthcheck_n_workers)
 
-        # Register servicers
+        # Register GetBacktest service
         athena_pb2_grpc.add_AthenaServicer_to_server(GetBacktestService(), self.server)
+        self.set_service_to_serving("Athena.GetBacktest")

@@ -8,9 +8,9 @@
 ##########################################################
 
 import grpc
-
-# Third-party imports
-from src.utils import logger
+from grpc import _channel
+from grpc_health.v1 import health_pb2
+from grpc_health.v1 import health_pb2_grpc
 
 
 class BaseClient(object):
@@ -31,12 +31,15 @@ class BaseClient(object):
         self.port = port
         self.target = f'{host}:{port}'
 
-        self.channel = None
+        self.service: str = None
+        self.sub = None
+        self.channel: _channel   = None
+        self.health_stub: health_pb2_grpc.HealthStub = None
 
 
-    def is_server_ready(self, timeout: int = 1) -> bool:
+    def is_server_serving(self, timeout: int = 1) -> bool:
         """
-            Returns whether server is connected and ready.
+            Returns whether server is up and serving.
 
             Parameters:
                 - timeout (int): Timeout for future request. Defaults to `1`.
@@ -48,7 +51,28 @@ class BaseClient(object):
             grpc.channel_ready_future(self.channel).result(timeout)
             return True
         except grpc.FutureTimeoutError:
-            logger.warning(f"Server not ready on {self.target}!")
             return False
         except Exception as ex:
             raise ex
+
+
+    def is_service_serving(self, rpc: str) -> bool:
+        """
+            This method sends a HealthCheckRequest to the health check service
+            to determine the health status of the specified service. It returns
+            True if the service is serving requests, and False if it's not serving.
+
+            Parameters:
+                - rpc (str): RPC name of the service.
+
+            Returns:
+                - bool: True if the service is healthy (serving requests), False otherwise.
+        """
+        service_rpc = f'{self.service}.{rpc}'
+        request = health_pb2.HealthCheckRequest(service=service_rpc)
+        response = self.health_stub.Check(request)
+
+        return {
+            health_pb2.HealthCheckResponse.SERVING: True,       # Healthy
+            health_pb2.HealthCheckResponse.NOT_SERVING: False   # Not healthy
+        }[response.status]
