@@ -9,6 +9,9 @@
 
 import grpc
 
+# Third-party imports
+from src.utils import logger
+
 
 class BaseClient(object):
 
@@ -45,6 +48,7 @@ class BaseClient(object):
             grpc.channel_ready_future(self.channel).result(timeout)
             return True
         except grpc.FutureTimeoutError:
+            logger.warning(f"Server not ready on {self.target}!")
             return False
         except Exception as ex:
             raise ex

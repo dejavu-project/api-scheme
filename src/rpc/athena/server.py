@@ -15,24 +15,24 @@ from protos.athena import athena_pb2
 from protos.athena import athena_pb2_grpc
 
 
-class BacktestService(athena_pb2_grpc.AthenaServicer):
+class GetBacktestService(athena_pb2_grpc.AthenaServicer):
 
-    def Backtest(
+    def GetBacktest(
         self,
-        request: athena_pb2.RequestBacktest,
+        request: athena_pb2.GetBacktestRequest,
         context: grpc.ServicerContext,
-    ) -> athena_pb2.ResponseBacktest:
+    ) -> athena_pb2.GetBacktestResponse:
         """
             Executes a backtest based on the provided request.
 
             Parameters:
-                - request (athena_pb2.RequestBacktest): The backtest request.
+                - request (athena_pb2.GetBacktestRequest): The backtest request.
                 - context (grpc.ServicerContext): The gRPC context.
 
             Returns:
-                - (athena_pb2.ResponseBacktest): The backtest response.
+                - (athena_pb2.GetBacktestResponse): The backtest response.
         """
-        response = athena_pb2.ResponseBacktest()
+        response = athena_pb2.GetBacktestResponse()
         return response
 
 
@@ -55,4 +55,4 @@ class AthenaServer(BaseServer):
         super().__init__(host, port, n_workers)
 
         # Register servicers
-        athena_pb2_grpc.add_AthenaServicer_to_server(BacktestService(), self.server)
+        athena_pb2_grpc.add_AthenaServicer_to_server(GetBacktestService(), self.server)

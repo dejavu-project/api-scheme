@@ -44,6 +44,6 @@ class BaseServer(object):
         """
             Starts the server in blocking mode.
         """
-        logger.debug(f"Starting server on {self.target}")
+        logger.debug(f"Listening on '{self.target}'")
         self.server.start()
         self.server.wait_for_termination()
