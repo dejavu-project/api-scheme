@@ -41,7 +41,7 @@ class AthenaClient(BaseClient):
         self.health_stub = health_pb2_grpc.HealthStub(self.channel) # Healthcheck
 
 
-    def get_backtest(self) -> dict:
+    def GetBacktest(self) -> dict:
         request = athena_pb2.GetBacktestRequest()   # Create request
         response = self.stub.GetBacktest(request)   # Get response
-        return MessageToDict(response)              # Return as dict
+        return MessageToDict(response)              # Return message as dict
