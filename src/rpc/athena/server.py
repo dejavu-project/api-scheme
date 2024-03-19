@@ -10,7 +10,7 @@
 import grpc
 
 # Third-party imports
-from src.base_server import BaseServer
+from src.rpc.base_server import BaseServer
 from protos.athena import athena_pb2
 from protos.athena import athena_pb2_grpc
 

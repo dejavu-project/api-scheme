@@ -6,7 +6,7 @@
 ##########################################################
 
 # Third-party imports
-from src.athena.server import AthenaServer
+from src.rpc.athena.server import AthenaServer
 
 
 if __name__ == '__main__':

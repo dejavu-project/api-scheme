@@ -10,6 +10,9 @@
 import grpc
 from concurrent import futures
 
+# Third-party imports
+from src.utils import logger
+
 
 class BaseServer(object):
 
@@ -41,5 +44,6 @@ class BaseServer(object):
         """
             Starts the server in blocking mode.
         """
+        logger.debug(f"Starting server on {self.target}")
         self.server.start()
         self.server.wait_for_termination()
