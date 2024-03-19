@@ -5,19 +5,19 @@ package athena.v1;
 import "athena/athena_struct.proto";
 import "candlestick_struct.proto";
 
-// [Request] RequestBacktest
-// broker:              Broker properties.
-// historicals:         Historical data.
-message RequestBacktest {
-    Broker broker = 1;
-    Historical historicals = 2;
+// [Request] GetBacktestRequest
+// config:              Broker configurations.
+// candlesticks:        Candlesticks data.
+message GetBacktestRequest {
+    Config config = 1;
+    Candlestick candlesticks = 2;
 }
 
-// [Response] ResponseBacktest
-message ResponseBacktest {
-    int64 id = 1;
+// [Response] GetBacktestResponse
+message GetBacktestResponse {
+    Statistics statistics = 1;
 }
 
 service Athena {
-    rpc Backtest (RequestBacktest) returns (ResponseBacktest);
+    rpc GetBacktest (GetBacktestRequest) returns (GetBacktestResponse);
 }
