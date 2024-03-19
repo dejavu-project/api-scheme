@@ -33,5 +33,5 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: ⚒️ Build api-scheme
-    run: |
-      make build
+      run: |
+        make build
