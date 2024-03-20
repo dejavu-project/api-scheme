@@ -18,10 +18,10 @@ message Ohlcv {
 }
 
 // Candlestick
-// Represents a single candlestick bar with timestamp and other properties
+// Represents a single candlestick bar with timestamp and other properties.
 message Candlestick {
     // Candlestick's Timestamp.
     google.protobuf.Timestamp timestamp = 1;
     // Candlestick's open, high, low, close and volume data.
-    repeated Ohlcv ohlcv = 2;
+    repeated Ohlcv ohlcvs = 2;
 }

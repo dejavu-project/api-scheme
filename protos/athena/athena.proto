@@ -15,7 +15,12 @@ message GetBacktestRequest {
 
 // GetBacktestResponse
 message GetBacktestResponse {
+    // Backtest statistics
     Statistics statistics = 1;
+    // Backtest orders' history
+    repeated Order orders = 2;
+    // Backtest trades' history
+    repeated Trade trades = 3;
 }
 
 service Athena {

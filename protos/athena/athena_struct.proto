@@ -18,12 +18,44 @@ message Config {
     bool exclusive_orders = 5;
 }
 
+// Order
+// Represents a single order data.
+message Order {
+    // Order size (positive for long, negative for short).
+    float size = 1;
+    // Limit order price.
+    float limit = 2;
+    // Stop order price.
+    float stop = 3;
+    // Stop-loss price.
+    float stop_loss = 4;
+    // Take-profit price.
+    float take_profit = 5;
+}
+
+// Trade
+// Represents a single trade data.
+message Trade {
+    // Size for the assets.
+    float size = 1;
+    // The entry price of the trade.
+    float entry_price = 2;
+    // The entry time of the trade.
+    float entry_time = 3;
+    // The exit price of the trade.
+    float exit_price = 4;
+    // The exit time of the trade.
+    float exit_time = 5;
+}
+
 // Statistics
 message Statistics {
-    // The timestamp for when the backstart is started
+    // The timestamp for when the backstart is started.
     google.protobuf.Timestamp start = 1;
-    // The timestamp for when the backstart is ended
+    // The timestamp for when the backstart is ended.
     google.protobuf.Timestamp end = 2;
-    // Number of trades
+    // Number of trades made.
     int64 n_trades = 3;
+    // Win rate ratio.
+    float win_rate = 4;
 }
