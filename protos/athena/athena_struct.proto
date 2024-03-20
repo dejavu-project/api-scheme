@@ -1,22 +1,29 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 package athena.v1;
 
 // Config
-// commission:          Commission rate charged by the broker for each trade.
-// cache:               Initial balance for trading.
-// capital_risk:        Capital risk limit imposed by the broker.
-// trade_on_close:      Indicates whether to trade on open or close.
-// exclusive_orders:    Indicates whether the broker accepts exclusive orders.
 message Config {
+    // Commission rate charged by the broker for each trade.
     float commission = 1;
+    // Initial balance for trading.
     float cache = 2;
+    // Capital risk limit imposed by the broker.
     float capital_risk = 3;
+    // Indicates whether to trade on open or close.
     bool trade_on_close = 4;
+    // Indicates whether the broker accepts exclusive orders.
     bool exclusive_orders = 5;
 }
 
 // Statistics
 message Statistics {
-    int64 id = 1;
+    // The timestamp for when the backstart is started
+    google.protobuf.Timestamp start = 1;
+    // The timestamp for when the backstart is ended
+    google.protobuf.Timestamp end = 2;
+    // Number of trades
+    int64 n_trades = 3;
 }

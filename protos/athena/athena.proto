@@ -5,15 +5,15 @@ package athena.v1;
 import "athena/athena_struct.proto";
 import "candlestick_struct.proto";
 
-// [Request] GetBacktestRequest
-// config:              Broker configurations.
-// candlesticks:        Candlesticks data.
+// GetBacktestRequest
 message GetBacktestRequest {
+    // Broker configurations.
     Config config = 1;
+    // Candlesticks data.
     Candlestick candlesticks = 2;
 }
 
-// [Response] GetBacktestResponse
+// GetBacktestResponse
 message GetBacktestResponse {
     Statistics statistics = 1;
 }
