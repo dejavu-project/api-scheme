@@ -7,8 +7,8 @@ import "candlestick_struct.proto";
 
 // GetBacktestRequest
 message GetBacktestRequest {
-    // Broker configurations.
-    Config config = 1;
+    // Backtest configurations.
+    BacktestConfig config = 1;
     // Candlesticks data.
     Candlestick candlesticks = 2;
 }

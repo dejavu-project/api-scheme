@@ -5,7 +5,7 @@ import "google/protobuf/timestamp.proto";
 package athena.v1;
 
 // Config
-message Config {
+message BacktestConfig {
     // Commission rate charged by the broker for each trade.
     float commission = 1;
     // Initial balance for trading.
@@ -31,6 +31,10 @@ message Order {
     float stop_loss = 4;
     // Take-profit price.
     float take_profit = 5;
+    // Is order contingent.
+    bool is_contingent = 6;
+    // Hash.
+    string hash = 6;
 }
 
 // Trade
@@ -46,6 +50,12 @@ message Trade {
     float exit_price = 4;
     // The exit time of the trade.
     float exit_time = 5;
+    // Profit/loss in units.
+    float pl = 6;
+    // Profit/loss in percentage.
+    float pl_ptc = 7;
+    // Hash.
+    string hash = 8;
 }
 
 // Statistics
