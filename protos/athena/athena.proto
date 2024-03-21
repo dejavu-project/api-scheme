@@ -8,18 +8,18 @@ import "candlestick_struct.proto";
 // GetBacktestRequest
 message GetBacktestRequest {
     // Backtest configurations.
-    BacktestConfig config = 1;
+    Configuration config = 1;
     // Candlesticks data.
     Candlestick candlesticks = 2;
 }
 
 // GetBacktestResponse
 message GetBacktestResponse {
-    // Backtest statistics
+    // Backtest statistics.
     Statistics statistics = 1;
-    // Backtest orders' history
+    // Backtest orders' history.
     repeated Order orders = 2;
-    // Backtest trades' history
+    // Backtest trades' history.
     repeated Trade trades = 3;
 }
 

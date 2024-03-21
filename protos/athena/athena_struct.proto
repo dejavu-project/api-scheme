@@ -4,12 +4,13 @@ import "google/protobuf/timestamp.proto";
 
 package athena.v1;
 
-// Config
-message BacktestConfig {
+// Configuration
+// Represents the configurations for the backtest.
+message Configuration {
     // Commission rate charged by the broker for each trade.
     float commission = 1;
     // Initial balance for trading.
-    float cache = 2;
+    float cash = 2;
     // Capital risk limit imposed by the broker.
     float capital_risk = 3;
     // Indicates whether to trade on open or close.
@@ -34,7 +35,7 @@ message Order {
     // Is order contingent.
     bool is_contingent = 6;
     // Hash.
-    string hash = 6;
+    string hash = 7;
 }
 
 // Trade
