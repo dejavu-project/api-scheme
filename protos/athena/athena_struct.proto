@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 
 package athena.v1;
 
@@ -14,9 +15,9 @@ message Configuration {
     // Capital risk limit imposed by the broker.
     float capital_risk = 3;
     // Indicates whether to trade on open or close.
-    bool trade_on_close = 4;
+    google.protobuf.BoolValue trade_on_close = 4;
     // Indicates whether the broker accepts exclusive orders.
-    bool exclusive_orders = 5;
+    google.protobuf.BoolValue exclusive_orders = 5;
 }
 
 // Order
@@ -33,7 +34,7 @@ message Order {
     // Take-profit price.
     float take_profit = 5;
     // Is order contingent.
-    bool is_contingent = 6;
+    google.protobuf.BoolValue is_contingent = 6;
     // Hash.
     string hash = 7;
 }
