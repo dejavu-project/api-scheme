@@ -35,3 +35,7 @@ jobs:
     - name: ⚒️ Build api-scheme
       run: |
         make build
+
+    - name: 🧪 Run tests
+      run: |
+        python -u -m unittest
