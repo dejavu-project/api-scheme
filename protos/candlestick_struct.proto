@@ -39,9 +39,9 @@ message Signal {
     // Side: Buy or sell
     Side side = 4;
     // Take-profit price
-    float take_profit = 6;
+    float take_profit = 5;
     // Stop-loss price
-    float stop_loss = 7;
+    float stop_loss = 6;
     // Confidence percentage [0-1]
-    float confidence = 5;
+    float confidence = 7;
 }
