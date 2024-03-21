@@ -1,20 +1,47 @@
 syntax = "proto3";
 
+import "enums_struct.proto";
 import "google/protobuf/timestamp.proto";
 
-// Candlestick
-// Represents a single candlestick bar with timestamp and other properties.
+// [message] Ohlcv
+// Represents open, high, low, close, and volume.
+message Ohlcv {
+    // Candlestick's opening price.
+    float open = 1;
+    // Candlestick's high price.
+    float high = 2;
+    // Candlestick's low price.
+    float low = 3;
+    // Candlestick's closing price.
+    float close = 4;
+    // Traded volume.
+    float volume = 5;
+}
+
+// [message] Candlestick
+// Represents a single candlestick.
 message Candlestick {
     // Candlestick's Timestamp.
     google.protobuf.Timestamp timestamp = 1;
-    // Candlestick's opening price.
-    float open = 2;
-    // Candlestick's high price.
-    float high = 3;
-    // Candlestick's low price.
-    float low = 4;
-    // Candlestick's closing price.
-    float close = 5;
-    // Traded volume.
-    float volume = 6;
+    // Candlestick's open, high, low, close and volume data.
+    Ohlcv ohlcv = 2;
+    // Signal
+    Signal signal = 3;
+}
+
+// [message] Signal
+// Represents signal for a single.
+message Signal {
+    // Timestamp for when the signal is generated
+    google.protobuf.Timestamp timestamp = 1;
+    // Position: Long or short
+    Position position = 3;
+    // Side: Buy or sell
+    Side side = 4;
+    // Take-profit price
+    float take_profit = 6;
+    // Stop-loss price
+    float stop_loss = 7;
+    // Confidence percentage [0-1]
+    float confidence = 5;
 }

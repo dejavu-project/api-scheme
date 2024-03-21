@@ -5,7 +5,7 @@ package athena.v1;
 import "athena/athena_struct.proto";
 import "candlestick_struct.proto";
 
-// GetBacktestRequest
+// [message] GetBacktestRequest
 message GetBacktestRequest {
     // Backtest configurations.
     Configuration config = 1;
@@ -13,7 +13,7 @@ message GetBacktestRequest {
     repeated Candlestick candlesticks = 2;
 }
 
-// GetBacktestResponse
+// [message] GetBacktestResponse
 message GetBacktestResponse {
     // Backtest statistics.
     Statistics statistics = 1;
