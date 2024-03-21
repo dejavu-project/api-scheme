@@ -10,7 +10,7 @@ message GetBacktestRequest {
     // Backtest configurations.
     Configuration config = 1;
     // Candlesticks data.
-    Candlestick candlesticks = 2;
+    repeated Candlestick candlesticks = 2;
 }
 
 // GetBacktestResponse

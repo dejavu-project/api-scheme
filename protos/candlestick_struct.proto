@@ -2,26 +2,19 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
-// Ohlcv
-// Represents open, high, low, close, and volume.
-message Ohlcv {
-    // Candlestick's opening price.
-    float open = 1;
-    // Candlestick's high price.
-    float high = 2;
-    // Candlestick's low price.
-    float low = 3;
-    // Candlestick's closing price.
-    float close = 4;
-    // Traded volume.
-    float volume = 5;
-}
-
 // Candlestick
 // Represents a single candlestick bar with timestamp and other properties.
 message Candlestick {
     // Candlestick's Timestamp.
     google.protobuf.Timestamp timestamp = 1;
-    // Candlestick's open, high, low, close and volume data.
-    repeated Ohlcv ohlcvs = 2;
+    // Candlestick's opening price.
+    float open = 2;
+    // Candlestick's high price.
+    float high = 3;
+    // Candlestick's low price.
+    float low = 4;
+    // Candlestick's closing price.
+    float close = 5;
+    // Traded volume.
+    float volume = 6;
 }
