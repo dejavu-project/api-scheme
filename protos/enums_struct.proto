@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+// [enum] Position
+// Represents a position, either long, short.
+enum Position {
+    // No position.
+    UNKNOWN_POSITION = 0;
+    // Long position.
+    LONG = 1;
+    // Short position.
+    SHORT = 2;
+}
+
+// [enum] Side
+// Represents a side, either buy, sell.
+enum Side {
+    // No position.
+    UNKNOWN_SIDE = 0;
+    // Buy side.
+    BUY = 1;
+    // Sell side.
+    SELL = 2;
+}

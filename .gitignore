@@ -160,5 +160,4 @@ cython_debug/
 #.idea/
 
 # other
-protos/**/*_pb2.py
-protos/**/*_pb2_grpc.py
+protos/**/*.py
