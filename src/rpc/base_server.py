@@ -47,12 +47,14 @@ class BaseServer(object):
         self.health_servicer: health.HealthServicer
         self._configure_health_server(healthcheck_n_workers)
 
+        logger.debug(f"RPC initialized with {n_workers} worker(s).")
+
 
     def start(self) -> None:
         """
             Starts the server in blocking mode.
         """
-        logger.debug(f"Listening on '{self.target}'")
+        logger.debug(f"RPC Listening on '{self.target}'")
         self.server.start()
         self.server.wait_for_termination()
 
