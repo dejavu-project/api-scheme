@@ -9,7 +9,6 @@
 
 import unittest
 from datetime import datetime
-from protos import candlestick_struct_pb2
 
 # Third-party
 from src.rpc.utils.messages import (
@@ -63,11 +62,13 @@ class TestCandlestick(unittest.TestCase):
 
     def test_get_candlestick_message(self):
         """ Test for `get_candlestick_message` """
-        timestamp = self.test_get_timestamp_message()
-        ohlcv = self.test_get_ohlcv_message()
+        timestamp   = self.test_get_timestamp_message()
+        ohlcv       = self.test_get_ohlcv_message()
+        signal      = self.test_get_signal_message()
         candlestick = get_candlestick_message(
             timestamp = timestamp,
-            ohlcv = ohlcv
+            ohlcv = ohlcv,
+            signal = signal
         )
         # Test
         assert candlestick.ohlcv == ohlcv, 'invalid `ohlcv` value'

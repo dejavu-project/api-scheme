@@ -31,7 +31,8 @@ def get_timestamp_message(
 
 def get_candlestick_message(
     timestamp: timestamp_pb2.Timestamp,
-    ohlcv: candlestick_struct_pb2.Ohlcv
+    ohlcv: candlestick_struct_pb2.Ohlcv,
+    signal: candlestick_struct_pb2.Signal
 ) -> candlestick_struct_pb2.Candlestick:
     """
         Returns a Candlestick message.
@@ -39,6 +40,7 @@ def get_candlestick_message(
         Parameters:
             - timestamp (timestamp_pb2.Timestamp): Timestamp of the candlestick.
             - ohlcv (candlestick_struct_pb2.Ohlcv): OHLCV message.
+            - signal (candlestick_struct_pb2.Signal): Signal message.
 
         Returns:
             - (candlestick_struct_pb2.Candlestick): Candlestick message.
@@ -46,6 +48,7 @@ def get_candlestick_message(
     return candlestick_struct_pb2.Candlestick(
         timestamp = timestamp,
         ohlcv = ohlcv,
+        signal = signal,
     )
 
 
