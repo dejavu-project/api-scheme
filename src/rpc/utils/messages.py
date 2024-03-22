@@ -103,7 +103,6 @@ def get_signal_message(
         Returns:
             - (candlestick_struct_pb2.Signal): Signal message.
     """
-    timestamp = get_timestamp_message(timestamp)    # Python datetime to `google.protobuf.Timestamp`
     return candlestick_struct_pb2.Signal(
         timestamp = timestamp,
         position = position,
