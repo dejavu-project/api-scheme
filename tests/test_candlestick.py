@@ -9,12 +9,14 @@
 
 import unittest
 from datetime import datetime
+from protos import candlestick_struct_pb2
 
 # Third-party
 from src.rpc.utils.messages import (
     get_ohlcv_message,
     get_timestamp_message,
     get_candlestick_message,
+    get_signal_message,
 )
 
 
@@ -71,6 +73,35 @@ class TestCandlestick(unittest.TestCase):
         assert candlestick.ohlcv == ohlcv, 'invalid `ohlcv` value'
         assert candlestick.timestamp == timestamp, 'invalid `timestamp` value'
 
+
+    def test_get_signal_message(self):
+        """ Test for `get_signal_message` """
+        _datetime = datetime(
+            year = 2024,
+            month = 3,
+            day = 20,
+            hour = 12,
+            minute = 20,
+            second = 45,
+            microsecond = 150
+        )
+        take_profit = 110
+        stop_loss = 90
+        confidence = 0.9
+        signal = get_signal_message(
+            timestamp = _datetime,
+            position = 'LONG',
+            side = 'BUY',
+            take_profit = take_profit,
+            stop_loss = stop_loss,
+            confidence = confidence
+        )
+        # Test
+        assert signal.timestamp.seconds == 1710937245, 'invalid seconds value'
+        assert signal.timestamp.nanos == 150000, 'invalid nanoseconds value'
+        assert signal.take_profit == take_profit, 'invalid take_profit value'
+        assert signal.stop_loss == stop_loss, 'invalid stop_loss value'
+        assert signal.confidence == confidence, 'invalid confidence value'
 
 
 if __name__ == '__main__':

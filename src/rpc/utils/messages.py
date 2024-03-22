@@ -57,7 +57,7 @@ def get_ohlcv_message(
     volume: float,
 ) -> candlestick_struct_pb2.Ohlcv:
     """
-        Returns a Ohlcv message
+        Returns a Ohlcv message.
     
         Parameters:
             - open (float): Opening price
@@ -75,4 +75,37 @@ def get_ohlcv_message(
         low =  low,
         close = close,
         volume = volume,
+    )
+
+
+def get_signal_message(
+    timestamp: datetime,
+    position: str,
+    side: str,
+    take_profit: float,
+    stop_loss: float,
+    confidence: float
+) -> candlestick_struct_pb2.Signal:
+    """
+        Returns a Signal message.
+
+        Parameters:
+            - timestamp (datetime): Timestamp of the signal.
+            - position (str): Position of the signal.
+            - side (str): Side of the signal.
+            - take_profit (float): Take profit value.
+            - stop_loss (float): Stop loss value.
+            - confidence (float): Confidence level of the signal.
+
+        Returns:
+            - (candlestick_struct_pb2.Signal): Signal message.
+    """
+    timestamp = get_timestamp_message(timestamp)    # Python datetime to `google.protobuf.Timestamp`
+    return candlestick_struct_pb2.Signal(
+        timestamp = timestamp,
+        position = position,
+        side = side,
+        take_profit = take_profit,
+        stop_loss = stop_loss,
+        confidence = confidence,
     )
