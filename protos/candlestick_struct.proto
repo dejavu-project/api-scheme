@@ -7,15 +7,15 @@ import "google/protobuf/timestamp.proto";
 // Represents open, high, low, close, and volume.
 message Ohlcv {
     // Candlestick's opening price.
-    float open = 1;
+    double open = 1;
     // Candlestick's high price.
-    float high = 2;
+    double high = 2;
     // Candlestick's low price.
-    float low = 3;
+    double low = 3;
     // Candlestick's closing price.
-    float close = 4;
+    double close = 4;
     // Traded volume.
-    float volume = 5;
+    double volume = 5;
 }
 
 // [message] Candlestick
@@ -39,9 +39,9 @@ message Signal {
     // Side: Buy or sell
     Side side = 4;
     // Take-profit price
-    float take_profit = 5;
+    double take_profit = 5;
     // Stop-loss price
-    float stop_loss = 6;
+    double stop_loss = 6;
     // Confidence percentage [0-1]
-    float confidence = 7;
+    double confidence = 7;
 }

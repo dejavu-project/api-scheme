@@ -9,11 +9,11 @@ package athena.v1;
 // Represents the configurations for the backtest.
 message Configuration {
     // Commission rate charged by the broker for each trade.
-    float commission = 1;
+    double commission = 1;
     // Initial balance for trading.
-    float cash = 2;
+    double cash = 2;
     // Capital risk limit imposed by the broker.
-    float capital_risk = 3;
+    double capital_risk = 3;
     // Indicates whether to trade on open or close.
     google.protobuf.BoolValue trade_on_close = 4;
     // Indicates whether the broker accepts exclusive orders.
@@ -24,15 +24,15 @@ message Configuration {
 // Represents a single order data.
 message Order {
     // Order size (positive for long, negative for short).
-    float size = 1;
+    double size = 1;
     // Limit order price.
-    float limit = 2;
+    double limit = 2;
     // Stop order price.
-    float stop = 3;
+    double stop = 3;
     // Stop-loss price.
-    float stop_loss = 4;
+    double stop_loss = 4;
     // Take-profit price.
-    float take_profit = 5;
+    double take_profit = 5;
     // Is order contingent.
     google.protobuf.BoolValue is_contingent = 6;
     // Hash.
@@ -43,19 +43,19 @@ message Order {
 // Represents a single trade data.
 message Trade {
     // Size for the assets.
-    float size = 1;
+    double size = 1;
     // The entry price of the trade.
-    float entry_price = 2;
+    double entry_price = 2;
     // The entry time of the trade.
-    float entry_time = 3;
+    double entry_time = 3;
     // The exit price of the trade.
-    float exit_price = 4;
+    double exit_price = 4;
     // The exit time of the trade.
-    float exit_time = 5;
+    double exit_time = 5;
     // Profit/loss in units.
-    float pl = 6;
+    double pl = 6;
     // Profit/loss in percentage.
-    float pl_ptc = 7;
+    double pl_ptc = 7;
     // Hash.
     string hash = 8;
 }
@@ -69,5 +69,5 @@ message Statistics {
     // Number of trades made.
     int64 n_trades = 3;
     // Win rate ratio.
-    float win_rate = 4;
+    double win_rate = 4;
 }
