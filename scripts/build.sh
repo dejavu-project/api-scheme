@@ -1,10 +1,12 @@
 #!/bin/bash
 
 working_dir=$(pwd)
-proto_dirs=($(pwd)/protos)  # ./protos/
-python_out=($(pwd)/protos/src/python)  # ./protos/src/python/
+proto_dirs=($working_dir/protos)
+python_out=($working_dir/protos/src/python)
 
-# Build *.proto files within the ./protobufs/ directory
+mkdir -p $proto_dirs
+mkdir -p $python_out
+
 for file in $(find "$proto_dirs" -type f -name "*.proto"); do
     filename=$(basename "$file")
     if echo "$filename" | grep -q "struct"; then

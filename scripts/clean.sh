@@ -1,7 +1,6 @@
 #!/bin/bash
 
 working_dir=$(pwd)
-proto_dirs=($(pwd)/protos)  # ./protos/
+python_out=($working_dir/protos/src)
 
-# Find all files with `pb2` and delete them
-find "$proto_dirs" -type f -name "*pb2*" -delete
+find "$python_out" -type f -name "*pb2*" -delete
