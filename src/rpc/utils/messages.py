@@ -9,7 +9,7 @@
 
 from datetime import datetime
 from google.protobuf import timestamp_pb2
-from protos import candlestick_struct_pb2
+from protos.src.python import candlestick_struct_pb2
 
 
 def get_timestamp_message(
