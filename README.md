@@ -19,12 +19,11 @@ git clone https://github.com/dejavu-project/api-scheme.git
 2. Create and activate a Virtual Environment:
 ```bash
 cd api-scheme
-python3 -m venv venv
-source env/bin/activate
+make setup
 ```
-3. Install dependencies:
+3. Install the dependencies:
 ```bash
-pip install -r requirements.txt
+make install
 ```
 4. Build the project:
 ```bash
