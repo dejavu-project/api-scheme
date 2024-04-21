@@ -25,3 +25,7 @@ clean:
 rebuild:
 	@$(MAKE) clean
 	@$(MAKE) build
+
+# Run tests
+test:
+	bash scripts/test.sh

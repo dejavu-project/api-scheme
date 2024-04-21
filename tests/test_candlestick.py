@@ -11,7 +11,7 @@ import unittest
 from datetime import datetime
 
 # Third-party
-from src.rpc.utils.messages import (
+from src.utils.messages import (
     get_ohlcv_message,
     get_timestamp_message,
     get_candlestick_message,
