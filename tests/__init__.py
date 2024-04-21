@@ -1,2 +1,2 @@
 import sys
-sys.path.append('protos')
+sys.path.append('./protos/src/python/')

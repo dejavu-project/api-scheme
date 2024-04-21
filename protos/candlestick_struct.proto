@@ -35,13 +35,13 @@ message Signal {
     // Timestamp for when the signal is generated
     google.protobuf.Timestamp timestamp = 1;
     // Position: Long or short
-    Position position = 3;
+    Position position = 2;
     // Side: Buy or sell
-    Side side = 4;
+    Side side = 3;
     // Take-profit price
-    double take_profit = 5;
+    double take_profit = 4;
     // Stop-loss price
-    double stop_loss = 6;
+    double stop_loss = 5;
     // Confidence percentage [0-1]
-    double confidence = 7;
+    double confidence = 6;
 }

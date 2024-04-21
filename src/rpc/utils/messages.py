@@ -104,7 +104,7 @@ def get_signal_message(
             - (candlestick_struct_pb2.Signal): Signal message.
     """
     return candlestick_struct_pb2.Signal(
-        timestamp = timestamp,
+        timestamp = get_timestamp_message(timestamp),
         position = position,
         side = side,
         take_profit = take_profit,
