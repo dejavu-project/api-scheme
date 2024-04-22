@@ -1,6 +1,7 @@
 # ⚡ api-scheme
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/dejavu-project/api-scheme/python-package.yml)
+[![Python package](https://github.com/dejavu-project/api-scheme/actions/workflows/python-package.yml/badge.svg)](https://github.com/dejavu-project/api-scheme/actions/workflows/python-package.yml)
 ![GitHub License](https://img.shields.io/github/license/dejavu-project/api-scheme)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dejavu-project/api-scheme)
 
