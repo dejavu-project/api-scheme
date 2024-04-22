@@ -47,14 +47,14 @@ class BaseServer(object):
         self.health_servicer: health.HealthServicer
         self._configure_health_server(healthcheck_n_workers)
 
-        logger.debug(f"RPC initialized with {n_workers} worker(s).")
+        logger.debug(f"gRPC server initialized with {n_workers} worker(s).")
 
 
     def start(self) -> None:
         """
             Starts the server in blocking mode.
         """
-        logger.debug(f"RPC Listening on '{self.target}'")
+        logger.debug(f"gRPC server Listening on '{self.target}'.")
         self.server.start()
         self.server.wait_for_termination()
 
@@ -85,6 +85,7 @@ class BaseServer(object):
             experimental_thread_pool = futures.ThreadPoolExecutor(max_workers=n_threads),
         )
         health_pb2_grpc.add_HealthServicer_to_server(self.health_servicer, self.server)
+        logger.debug(f"gRPC server healthcheck initialized with {n_threads} worker(s).")
 
 
     def set_service_to_serving(self, service: str) -> None:
